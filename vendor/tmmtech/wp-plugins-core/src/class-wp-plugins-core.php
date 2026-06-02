@@ -115,12 +115,12 @@ final class WP_Plugins_Core {
         new Assets\Assets;
 
         // Notifications.
-        // FORK (secure): disabled. The Notifications class fetched a remote ad/promo
-        // feed from wpplugins-midlayer.tmm-technology.com hourly (via Action Scheduler)
-        // and rendered it through admin_notices as the "drip" swiper carousel. Removing
-        // it strips all ads/promotions and removes the only consumer of the bundled
-        // Swiper library that carried CVE-2026-27212.
-        // new Notifications( $this );
+        // FORK (secure): removed entirely (class-notifications.php deleted). It fetched
+        // a remote ad/promo feed from wpplugins-midlayer.tmm-technology.com hourly (via
+        // Action Scheduler) and rendered it through admin_notices as the "drip" swiper
+        // carousel. Removing it strips all ads/promotions, and removed the only
+        // consumers of both the bundled Swiper library (CVE-2026-27212) and Action
+        // Scheduler — which have also been deleted from the fork.
 
         // Required PHP Extensions.
         new Required_PHP_Extensions( $this );
