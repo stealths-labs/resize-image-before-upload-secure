@@ -159,7 +159,8 @@ final class Resize_Image_Before_Upload {
         $files = [
             'vendor/autoload_packages',
             'vendor/tmmtech/wp-plugins-core/wp-plugins-core',
-            'vendor/woocommerce/action-scheduler/action-scheduler',
+            // FORK (secure): action-scheduler removed — was only used by the
+            // disabled Notifications class to schedule the hourly remote ad fetch.
         ];
         foreach ( $files as $file ) {
             require_once RIBU_DIR . $file . '.php';

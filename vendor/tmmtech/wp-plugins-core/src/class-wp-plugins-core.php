@@ -165,7 +165,8 @@ final class WP_Plugins_Core {
     private function import_plugin_files() {
         $src_files = [
             'class-ajax',
-            'class-action-scheduler',
+            // FORK (secure): 'class-action-scheduler' removed — only used by the
+            // disabled Notifications class (ad/promo feed).
             'class-options',
             // FORK (secure): 'class-notifications' removed — the ad/promo feed is disabled.
             'class-setting-fields',
