@@ -131,14 +131,18 @@ final class Resize_Image_Before_Upload {
         self::$name = get_file_data( RIBU_FILE, [ 'Plugin Name' ] )[0];
 
         /**
-         * Plugin slug. Derived from the directory name; fall back to basename
-         * if the path has no "plugins" segment (symlinked / relocated installs).
+         * Plugin slug. PINNED to the original slug (not derived from the renamed
+         * fork directory) so the option-key namespace stays aligned.
+         *
+         * Option keys in data/options.php are hard-coded with the
+         * `resize-image-before-upload-setting-*` prefix, and Options::get()/set()
+         * rebuild short names as "{slug}-{name}". If the slug followed the renamed
+         * directory (`resize-image-before-upload-secure`) the rebuilt key would no
+         * longer exist in data/options.php and Options::validation_option() would
+         * throw an uncaught "Unknown option name" during enqueue, breaking pages.
+         * Pinning also preserves any settings the original plugin already stored.
          */
-        $dir_parts  = explode( '/', untrailingslashit( RIBU_DIR ) );
-        $idx        = array_search( 'plugins', $dir_parts, true );
-        self::$slug = ( false !== $idx && isset( $dir_parts[ $idx + 1 ] ) )
-            ? $dir_parts[ $idx + 1 ]
-            : basename( untrailingslashit( RIBU_DIR ) );
+        self::$slug = 'resize-image-before-upload';
 
         /**
          * Plugin version.
