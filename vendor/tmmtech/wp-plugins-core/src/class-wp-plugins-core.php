@@ -208,7 +208,8 @@ final class WP_Plugins_Core {
         }
         if ( ! function_exists( 'str_contains' ) ) {
             function str_contains( $haystack, $needle ) {
-                return $needle !== '' && strpos( $haystack, $needle ) !== false;
+                // Match native PHP 8 behaviour: an empty needle returns true.
+                return '' === $needle || false !== strpos( $haystack, $needle );
             }
         }
     }

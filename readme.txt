@@ -24,7 +24,7 @@ used only to render a remote promotional "drip notifications" carousel. The
 upstream author has not refreshed the library. This fork disables all
 ads/promotions and the remote notification feed, removes the Swiper enqueues,
 and deletes the bundled Swiper library. "Update URI: false" prevents WordPress
-from overwriting the fork from wordpress.org. The core image-resize feature is
+from overwriting the fork from WordPress.org. The core image-resize feature is
 unchanged. See SECURITY-vuln-exceptions.md at the repository root.
 
 == Settings ==
